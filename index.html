@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Time tracking dashboard</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <!-- Profile Card -->
+      <section class="profile-card" aria-label="User profile">
+        <div class="profile-header">
+          <img
+            src="./images/image-jeremy.png"
+            alt="Jeremy Robson"
+            class="profile-avatar"
+            width="80"
+            height="80"
+          />
+          <p class="profile-subtitle">Report for</p>
+          <h1 class="profile-name">Jeremy Robson</h1>
+        </div>
+
+        <div
+          class="profile-controls"
+          role="tablist"
+          aria-label="Time period selector"
+        >
+          <button
+            class="period-btn"
+            data-period="daily"
+            role="tab"
+            aria-selected="false"
+          >
+            Daily
+          </button>
+          <button
+            class="period-btn active"
+            data-period="weekly"
+            role="tab"
+            aria-selected="true"
+          >
+            Weekly
+          </button>
+          <button
+            class="period-btn"
+            data-period="monthly"
+            role="tab"
+            aria-selected="false"
+          >
+            Monthly
+          </button>
+        </div>
+      </section>
+
+      <!-- Activity Cards -->
+      <section class="activity-grid" aria-label="Activity time tracking">
+        <!-- Cards will be rendered by JavaScript -->
+      </section>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/Kelvyn94">Kelvyn94</a>.
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

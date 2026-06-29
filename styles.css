@@ -1,0 +1,463 @@
+/* ============================================
+   CSS CUSTOM PROPERTIES (Theming)
+   ============================================ */
+:root {
+  /* Primary Colors */
+  --color-purple-600: hsl(246, 80%, 60%);
+
+  --color-orange-300: hsl(15, 100%, 70%);
+  --color-blue-300: hsl(195, 74%, 62%);
+  --color-pink-400: hsl(348, 100%, 68%);
+  --color-green-400: hsl(145, 58%, 55%);
+  --color-purple-700: hsl(264, 64%, 52%);
+  --color-yellow-300: hsl(43, 84%, 65%);
+
+  /* Neutral Colors */
+  --color-navy-950: hsl(226, 43%, 10%);
+  --color-navy-900: hsl(235, 46%, 20%);
+  --color-purple-500: hsl(235, 45%, 61%);
+  --color-navy-200: hsl(236, 100%, 87%);
+
+  /* Typography */
+  --font-family: "Rubik", sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* Spacing Scale (relative) */
+  --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 1vw, 0.75rem);
+  --space-md: clamp(0.75rem, 1.5vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+  --space-xl: clamp(2rem, 4vw, 3.5rem);
+
+  /* Border Radius */
+  --radius-md: clamp(0.75rem, 1.5vw, 1.25rem);
+  --radius-lg: clamp(1rem, 2vw, 1.75rem);
+  --radius-xl: clamp(1.25rem, 2.5vw, 2rem);
+
+  /* Card colors */
+  --card-bg: var(--color-navy-900);
+  --profile-bg: var(--color-purple-600);
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-navy-950);
+  font-family: var(--font-family);
+  font-size: 18px;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  color: #fff;
+}
+
+/* ============================================
+   DASHBOARD LAYOUT - MOBILE FIRST
+   ============================================ */
+.dashboard {
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.profile-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  grid-column: 1 / -1;
+}
+
+.profile-header {
+  background-color: var(--profile-bg);
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-lg);
+}
+
+.profile-avatar {
+  width: clamp(60px, 12vw, 80px);
+  height: clamp(60px, 12vw, 80px);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.profile-subtitle {
+  font-weight: var(--font-weight-light);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: var(--color-navy-200);
+  opacity: 0.8;
+}
+
+.profile-name {
+  font-weight: var(--font-weight-light);
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  margin-top: var(--space-xs);
+}
+
+/* Profile Controls (Tabs) */
+.profile-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-md);
+}
+
+.period-btn {
+  background: none;
+  border: none;
+  color: var(--color-purple-500);
+  font-family: var(--font-family);
+  font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+  font-weight: var(--font-weight-regular);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.period-btn:hover {
+  color: #fff;
+}
+
+.period-btn.active {
+  color: #fff;
+}
+
+/* ============================================
+   ACTIVITY GRID - MOBILE FIRST
+   ============================================ */
+.activity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  grid-column: 1 / -1;
+}
+
+/* ============================================
+   ACTIVITY CARD
+   ============================================ */
+.activity-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Colored top bar */
+.activity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  z-index: 0;
+}
+
+/* Icon background */
+.activity-card .card-icon {
+  position: absolute;
+  top: clamp(0.5rem, 1vw, 0.75rem);
+  right: var(--space-md);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.activity-card .card-icon img {
+  width: clamp(50px, 8vw, 70px);
+  height: auto;
+  display: block;
+}
+
+/* Card content (sits on top) */
+.card-content {
+  position: relative;
+  z-index: 1;
+  background-color: var(--card-bg);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.card-content:hover {
+  background-color: hsl(235, 46%, 25%);
+}
+
+/* Card header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.card-title {
+  font-weight: var(--font-weight-medium);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.card-menu-btn {
+  background: none;
+  border: none;
+  color: var(--color-purple-500);
+  cursor: pointer;
+  padding: var(--space-xs);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.card-menu-btn:hover {
+  color: #fff;
+}
+
+/* Card stats */
+.card-current {
+  font-weight: var(--font-weight-light);
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 1.2;
+}
+
+.card-previous {
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  color: var(--color-purple-500);
+}
+
+/* ============================================
+   ACTIVITY CARD COLOR VARIANTS
+   ============================================ */
+.activity-card[data-activity="Work"]::before {
+  background-color: var(--color-orange-300);
+}
+.activity-card[data-activity="Play"]::before {
+  background-color: var(--color-blue-300);
+}
+.activity-card[data-activity="Study"]::before {
+  background-color: var(--color-pink-400);
+}
+.activity-card[data-activity="Exercise"]::before {
+  background-color: var(--color-green-400);
+}
+.activity-card[data-activity="Social"]::before {
+  background-color: var(--color-purple-700);
+}
+.activity-card[data-activity="Self Care"]::before {
+  background-color: var(--color-yellow-300);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* ============================================
+   BREAKPOINT 1: SMALL TABLETS (520px+)
+   ============================================ */
+@media (min-width: 520px) {
+  .activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   BREAKPOINT 2: MEDIUM TABLETS (600px+)
+   ============================================ */
+@media (min-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .profile-card {
+    grid-column: 1 / -1;
+  }
+
+  .profile-header {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .profile-avatar {
+    margin-bottom: 0;
+  }
+
+  .profile-name {
+    margin-top: 0;
+  }
+
+  .activity-grid {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ============================================
+   BREAKPOINT 3: LARGE TABLETS / SMALL DESKTOPS (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: clamp(220px, 25vw, 280px) 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .profile-card {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: var(--space-lg);
+  }
+
+  .profile-avatar {
+    margin-bottom: var(--space-sm);
+  }
+
+  .profile-name {
+    margin-top: var(--space-xs);
+  }
+
+  .profile-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-lg);
+    gap: var(--space-sm);
+  }
+
+  .activity-grid {
+    grid-column: 2 / -1;
+    grid-row: 1 / 3;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   BREAKPOINT 4: DESKTOP (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 255px 1fr 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.75rem);
+  }
+
+  .profile-card {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .activity-grid {
+    grid-column: 2 / -1;
+    grid-row: 1 / 3;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .card-content {
+    padding: var(--space-lg);
+  }
+
+  .card-header {
+    margin-bottom: var(--space-md);
+  }
+}
+
+/* ============================================
+   BREAKPOINT 5: EXTRA LARGE DESKTOP (1280px+)
+   ============================================ */
+@media (min-width: 1280px) {
+  .dashboard {
+    max-width: 1200px;
+    gap: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .activity-grid {
+    gap: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .profile-header {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .profile-controls {
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+/* ============================================
+   BREAKPOINT 6: ULTRA WIDE (1600px+)
+   ============================================ */
+@media (min-width: 1600px) {
+  .dashboard {
+    max-width: 1400px;
+  }
+
+  .profile-card {
+    grid-column: 1 / 2;
+  }
+
+  .activity-grid {
+    grid-column: 2 / -1;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   ATTRIBUTION
+   ============================================ */
+.attribution {
+  margin-top: var(--space-xl);
+  font-size: clamp(0.6875rem, 0.8vw, 0.75rem);
+  text-align: center;
+  color: var(--color-purple-500);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.attribution a {
+  color: var(--color-navy-200);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   UTILITY: REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
